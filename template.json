@@ -6,123 +6,103 @@
             "type": "group",
             "fields": [
                 {
-                    "label": "Chief Complaint",
+                    "label": "Name",
+                    "id": "name",
+                    "type": "text",
+                    "inputType": "input",
+                    "placeholder": "Patient's name"
+                },
+                {
+                    "label": "Age",
+                    "id": "age",
+                    "type": "number",
+                    "inputType": "input",
+                    "placeholder": "Patient's age"
+                },
+                {
+                    "label": "Gender",
+                    "id": "gender",
+                    "type": "text",
+                    "inputType": "dropdown",
+                    "options": ["Male", "Female", "Other"]
+                },
+                {
+                    "label": "Date of Telemed Visit",
+                    "id": "dateOfVisit",
+                    "type": "date",
+                    "inputType": "input"
+                },
+                {
+                    "label": "Visit Type",
+                    "id": "visitType",
+                    "type": "text",
+                    "inputType": "dropdown",
+                    "options": ["Initial", "Follow-up", "Urgent", "Routine"]
+                },
+                {
+                    "label": "History",
+                    "id": "history",
+                    "type": "group",
+                    "fields": [
+                        { "label": "Family History", "id": "familyHistory", "type": "text", "inputType": "textarea" },
+                        { "label": "Social History", "id": "socialHistory", "type": "text", "inputType": "textarea" },
+                        { "label": "Past Hospitalizations", "id": "pastHospitalizations", "type": "text", "inputType": "textarea" },
+                        { "label": "Past Medical History", "id": "pastMedicalHistory", "type": "text", "inputType": "textarea" },
+                        { "label": "Past Surgical History", "id": "pastSurgicalHistory", "type": "text", "inputType": "textarea" },
+                        { "label": "Current Allergies", "id": "currentAllergies", "type": "text", "inputType": "textarea" }
+                    ]
+                },
+                {
+                    "label": "Current Medications",
+                    "id": "currentMeds",
+                    "type": "text",
+                    "inputType": "textarea",
+                    "placeholder": "List current medications"
+                },
+                {
+                    "label": "Chief Complaint (CC)",
                     "id": "chiefComplaint",
                     "type": "text",
                     "inputType": "textarea",
-                    "placeholder": "Describe the main issue"
+                    "placeholder": "Primary complaint"
                 },
                 {
-                    "label": "History of Present Illness",
+                    "label": "History of Present Illness (HPI)",
                     "id": "HPI",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "Detail the history of the current condition"
+                    "type": "group",
+                    "fields": [
+                        { "label": "Duration", "id": "duration", "type": "text", "inputType": "input" },
+                        { "label": "Severity", "id": "severity", "type": "text", "inputType": "input" },
+                        { "label": "Pain Scale", "id": "painScale", "type": "number", "inputType": "input", "min": 0, "max": 10 },
+                        { "label": "Location", "id": "location", "type": "text", "inputType": "input" },
+                        { "label": "Associated Symptoms", "id": "associatedSymptoms", "type": "text", "inputType": "textarea" },
+                        { "label": "Patient’s Description", "id": "patientDescription", "type": "text", "inputType": "textarea" },
+                        { "label": "Onset", "id": "onset", "type": "text", "inputType": "dropdown", "options": ["Sudden", "Gradual"] },
+                        { "label": "Progression", "id": "progression", "type": "text", "inputType": "dropdown", "options": ["Improving", "Worsening", "Unchanged"] },
+                        { "label": "Context", "id": "context", "type": "text", "inputType": "textarea" },
+                        { "label": "Modifying Factors", "id": "modifyingFactors", "type": "text", "inputType": "textarea" },
+                        { "label": "Previous Episodes", "id": "previousEpisodes", "type": "text", "inputType": "textarea" }
+                    ]
                 },
                 {
-                    "label": "Review of Systems",
+                    "label": "Review of Systems (ROS)",
                     "id": "reviewOfSystems",
                     "type": "group",
                     "fields": [
-                        {
-                            "label": "General",
-                            "id": "general",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant general information"
-                        },
-                        {
-                            "label": "Cardiovascular",
-                            "id": "cardiovascular",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant cardiovascular information"
-                        },
-                        {
-                            "label": "Respiratory",
-                            "id": "respiratory",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant respiratory information"
-                        },
-                        {
-                            "label": "Gastrointenstinal",
-                            "id": "gastrointenstina;",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant gastrointenstinal informatiion"
-                        },
-                        {
-                            "label": "Musculoskeletal",
-                            "id": "musculoskeletal",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant musculoskeletal information"
-                        },
-                        {
-                            "label": "Neurological",
-                            "id": "neurological",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant neurological information"
-                        },
-                        {
-                            "label": "Other",
-                            "id": "otherROS",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant information not previously stated"
-                        }
+                        { "label": "Constitutional", "id": "constitutional", "type": "text", "inputType": "textarea" },
+                        { "label": "HEENT", "id": "HEENT", "type": "text", "inputType": "textarea" },
+                        { "label": "Respiratory", "id": "respiratory", "type": "text", "inputType": "textarea" },
+                        { "label": "Cardiovascular", "id": "cardiovascular", "type": "text", "inputType": "textarea" },
+                        { "label": "Gastrointestinal", "id": "gastrointestinal", "type": "text", "inputType": "textarea" },
+                        { "label": "Genitourinary", "id": "genitourinary", "type": "text", "inputType": "textarea" },
+                        { "label": "Metabolic/Endocrine", "id": "endocrine", "type": "text", "inputType": "textarea" },
+                        { "label": "Neurological", "id": "neurological", "type": "text", "inputType": "textarea" },
+                        { "label": "Psychiatric", "id": "psychiatric", "type": "text", "inputType": "textarea" },
+                        { "label": "Integumentary", "id": "integumentary", "type": "text", "inputType": "textarea" },
+                        { "label": "Musculoskeletal", "id": "musculoskeletal", "type": "text", "inputType": "textarea" },
+                        { "label": "Hematologic", "id": "hematologic", "type": "text", "inputType": "textarea" },
+                        { "label": "Immunologic", "id": "immunologic", "type": "text", "inputType": "textarea" }
                     ]
-                },
-                {
-                    "label": "Patient Histoy",
-                    "id": "patientHistory",
-                    "type": "group",
-                    "fields": [
-                        {
-                            "label": "Past Medical History",
-                            "id": "pastMedicalHistory",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant past medical history"
-                        },
-                        {
-                            "label": "Surgical History",
-                            "id": "surgicalHistory",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant past surgical history"
-                        },
-                        {
-                            "label": "Family Medical History",
-                            "id": "familyHistory",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant past family medical history"
-                        },
-                        {
-                            "label": "Social History",
-                            "id": "socialHistory",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant past patient social history"
-                        }
-                    ]
-                },
-                {
-                    "label": "Allergies",
-                    "id": "allergies",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "Detail the patient allergies"
-                },
-                {
-                    "label": "coming soon",
-                    "id": "todo",
-                    "type": "text",
-                    "inputType": "input",
-                    "placeholder": "todo field"
                 }
             ]
         },
@@ -132,27 +112,50 @@
             "type": "group",
             "fields": [
                 {
-                    "label": "test",
-                    "id": "test",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "testing"
+                    "label": "Vital Signs",
+                    "id": "vitalSigns",
+                    "type": "group",
+                    "fields": [
+                        { "label": "Temperature", "id": "temperature", "type": "number", "inputType": "input" },
+                        { "label": "Pulse", "id": "pulse", "type": "number", "inputType": "input" },
+                        { "label": "Blood Pressure", "id": "bloodPressure", "type": "text", "inputType": "input" },
+                        { "label": "Respiratory Rate", "id": "respiratoryRate", "type": "number", "inputType": "input" },
+                        { "label": "Oxygen Saturation", "id": "oxygenSaturation", "type": "number", "inputType": "input" },
+                        { "label": "Height", "id": "height", "type": "number", "inputType": "input" },
+                        { "label": "Weight", "id": "weight", "type": "number", "inputType": "input" }
+                    ]
                 },
-                {
-                    "label": "test",
-                    "id": "test",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "testing"
-                },
-                {
-                    "label": "test",
-                    "id": "test",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "testing"
-                }
+                { "label": "Physical Examination", "id": "physicalExamination", "type": "group", "fields": [
+                    { "label": "General", "id": "general", "type": "text", "inputType": "textarea" },
+                    { "label": "Respiratory System", "id": "respiratorySystem", "type": "text", "inputType": "textarea" },
+                    { "label": "Cardiovascular System", "id": "cardiovascularSystem", "type": "text", "inputType": "textarea" },
+                    { "label": "Abdominal Examination", "id": "abdominalExam", "type": "text", "inputType": "textarea" },
+                    { "label": "Musculoskeletal System", "id": "musculoskeletalSystem", "type": "text", "inputType": "textarea" },
+                    { "label": "Neurological Examination", "id": "neurologicalExam", "type": "text", "inputType": "textarea" }
+                ] }
+            ]
+        },
+        {
+            "label": "Assessment",
+            "id": "assessment",
+            "type": "group",
+            "fields": [
+                { "label": "Diagnosis", "id": "diagnosis", "type": "text", "inputType": "textarea" }
+            ]
+        },
+        {
+            "label": "Plan",
+            "id": "plan",
+            "type": "group",
+            "fields": [
+                { "label": "Treatment Plan", "id": "treatmentPlan", "type": "text", "inputType": "textarea" },
+                { "label": "Follow-up", "id": "followUp", "type": "text", "inputType": "textarea" }
             ]
         }
     ]
 }
+
+
+
+
+

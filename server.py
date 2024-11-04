@@ -57,20 +57,15 @@ async def soap_notes(soapnote_id):
 
 @app.route("/patient-portal", methods=["GET", "POST"])
 async def patient_portal():
-    if request.method == "POST":
-        patient_name = (await request.form).get("name-query", "")
+    patient_name = (await request.form).get("name-query", "")
 
-        portal_helper = utils.PatientPortal(db)
-        table_body_html = await portal_helper.get_patient_table(patient_name)
+    portal_helper = utils.PatientPortal(db)
+    table_body_html = await portal_helper.get_patient_table(patient_name)
 
-        
-        
-        return await render_template(
-            "patient-portal.html",
-            table_body=Markup(table_body_html),
-        )
-
-    return await render_template("patient-portal.html")
+    return await render_template(
+        "patient-portal.html",
+        table_body=Markup(table_body_html),
+    )
 
 @app.route("/appointments", methods=["GET", "POST"])
 async def appointments_index():
