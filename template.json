@@ -25,46 +25,46 @@
                     "type": "group",
                     "fields": [
                         {
-                            "label": "General",
-                            "id": "general",
+                            "label": "Constitutional",
+                            "id": "constitutional",
                             "type": "text",
                             "inputType": "textarea",
-                            "placeholder": "Include any relevant general information"
+                            "placeholder": "Include any relevant general information (e.g., fever, weight loss)"
                         },
                         {
                             "label": "Cardiovascular",
                             "id": "cardiovascular",
                             "type": "text",
                             "inputType": "textarea",
-                            "placeholder": "Include any relevant cardiovascular information"
+                            "placeholder": "Include any relevant cardiovascular information (e.g., chest pain, palpitations)"
                         },
                         {
                             "label": "Respiratory",
                             "id": "respiratory",
                             "type": "text",
                             "inputType": "textarea",
-                            "placeholder": "Include any relevant respiratory information"
+                            "placeholder": "Include any relevant respiratory information (e.g., cough, shortness of breath)"
                         },
                         {
-                            "label": "Gastrointenstinal",
-                            "id": "gastrointenstina;",
+                            "label": "Gastrointestinal",
+                            "id": "gastrointestinal",
                             "type": "text",
                             "inputType": "textarea",
-                            "placeholder": "Include any relevant gastrointenstinal informatiion"
+                            "placeholder": "Include any relevant gastrointestinal information (e.g., abdominal pain, nausea)"
                         },
                         {
                             "label": "Musculoskeletal",
                             "id": "musculoskeletal",
                             "type": "text",
                             "inputType": "textarea",
-                            "placeholder": "Include any relevant musculoskeletal information"
+                            "placeholder": "Include any relevant musculoskeletal information (e.g., joint pain, back pain)"
                         },
                         {
                             "label": "Neurological",
                             "id": "neurological",
                             "type": "text",
                             "inputType": "textarea",
-                            "placeholder": "Include any relevant neurological information"
+                            "placeholder": "Include any relevant neurological information (e.g., dizziness, headaches)"
                         },
                         {
                             "label": "Other",
@@ -76,7 +76,7 @@
                     ]
                 },
                 {
-                    "label": "Patient Histoy",
+                    "label": "Patient History",
                     "id": "patientHistory",
                     "type": "group",
                     "fields": [
@@ -118,7 +118,7 @@
                     "placeholder": "Detail the patient allergies"
                 },
                 {
-                    "label": "coming soon",
+                    "label": "Coming Soon",
                     "id": "todo",
                     "type": "text",
                     "inputType": "input",
@@ -132,25 +132,165 @@
             "type": "group",
             "fields": [
                 {
-                    "label": "test",
-                    "id": "test",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "testing"
+                    "label": "Vital Signs",
+                    "id": "vitalSigns",
+                    "type": "group",
+                    "fields": [
+                        {
+                            "label": "Temperature",
+                            "id": "temperature",
+                            "type": "text",
+                            "inputType": "input",
+                            "placeholder": "Input temperature (°C or °F)"
+                        },
+                        {
+                            "label": "Pulse",
+                            "id": "pulse",
+                            "type": "text",
+                            "inputType": "input",
+                            "placeholder": "Input pulse (bpm)"
+                        },
+                        {
+                            "label": "Blood Pressure",
+                            "id": "bloodPressure",
+                            "type": "text",
+                            "inputType": "input",
+                            "placeholder": "Input blood pressure (mmHg)"
+                        },
+                        {
+                            "label": "Respiratory Rate",
+                            "id": "respiratoryRate",
+                            "type": "text",
+                            "inputType": "input",
+                            "placeholder": "Input respiratory rate (breaths/min)"
+                        },
+                        {
+                            "label": "Oxygen Saturation",
+                            "id": "oxygenSaturation",
+                            "type": "text",
+                            "inputType": "input",
+                            "placeholder": "Input oxygen saturation (%)"
+                        },
+                        {
+                            "label": "Height",
+                            "id": "height",
+                            "type": "text",
+                            "inputType": "input",
+                            "placeholder": "Input height (in/cm)"
+                        },
+                        {
+                            "label": "Weight",
+                            "id": "weight",
+                            "type": "text",
+                            "inputType": "input",
+                            "placeholder": "Input weight (lb/kg)"
+                        }
+                    ]
                 },
                 {
-                    "label": "test",
-                    "id": "test",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "testing"
+                    "label": "Physical Examination",
+                    "id": "physicalExamination",
+                    "type": "group",
+                    "fields": [
+                        {
+                            "label": "General",
+                            "id": "generalExam",
+                            "type": "text",
+                            "inputType": "textarea",
+                            "placeholder": "General examination notes (e.g., no acute distress)"
+                        },
+                        {
+                            "label": "Respiratory System",
+                            "id": "respiratoryExam",
+                            "type": "text",
+                            "inputType": "textarea",
+                            "placeholder": "Respiratory system examination (e.g., breathing comfortably)"
+                        },
+                        {
+                            "label": "Cardiovascular System",
+                            "id": "cardiovascularExam",
+                            "type": "text",
+                            "inputType": "textarea",
+                            "placeholder": "Cardiovascular examination notes"
+                        },
+                        {
+                            "label": "Abdominal Examination",
+                            "id": "abdominalExam",
+                            "type": "text",
+                            "inputType": "textarea",
+                            "placeholder": "Abdominal examination notes (e.g., no abdominal distension)"
+                        },
+                        {
+                            "label": "Musculoskeletal System",
+                            "id": "musculoskeletalExam",
+                            "type": "text",
+                            "inputType": "textarea",
+                            "placeholder": "Musculoskeletal examination notes (e.g., no swelling, full range of motion)"
+                        },
+                        {
+                            "label": "Neurological Examination",
+                            "id": "neurologicalExam",
+                            "type": "text",
+                            "inputType": "textarea",
+                            "placeholder": "Neurological examination notes (e.g., no issues with coordination)"
+                        }
+                    ]
                 },
                 {
-                    "label": "test",
-                    "id": "test",
+                    "label": "Laboratory/Diagnostic Results",
+                    "id": "labResults",
                     "type": "text",
                     "inputType": "textarea",
-                    "placeholder": "testing"
+                    "placeholder": "Input relevant laboratory or diagnostic results"
+                }
+            ]
+        },
+        {
+            "label": "Assessment",
+            "id": "assessment",
+            "type": "group",
+            "fields": [
+                {
+                    "label": "Diagnosis",
+                    "id": "diagnosis",
+                    "type": "text",
+                    "inputType": "textarea",
+                    "placeholder": "Input diagnosis"
+                }
+            ]
+        },
+        {
+            "label": "Plan",
+            "id": "plan",
+            "type": "group",
+            "fields": [
+                {
+                    "label": "Treatment Plan",
+                    "id": "treatmentPlan",
+                    "type": "text",
+                    "inputType": "textarea",
+                    "placeholder": "Input treatment plan"
+                },
+                {
+                    "label": "Follow Up",
+                    "id": "followUp",
+                    "type": "text",
+                    "inputType": "textarea",
+                    "placeholder": "Input follow-up recommendations"
+                }
+            ]
+        },
+        {
+            "label": "Additional Notes",
+            "id": "more_notes",
+            "type": "group",
+            "fields": [
+                {
+                    "label": "Additional Notes",
+                    "id": "additional_notes",
+                    "type": "text",
+                    "inputType": "textarea",
+                    "placeholder": "Input any additional notes needed!"
                 }
             ]
         }

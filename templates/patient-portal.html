@@ -6,17 +6,21 @@
 {{ super() }}
 
 <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 {% endblock %}
 
 
 {% block content %}
 
 <h1>Patient Directory</h1>
-<hr>
+
 
 <h3>Search for patient</h3>
 
-<form method="post">
+<form id="load-patients-form" method="post">
 
     <div class="input-group input-group-lg mb-3">
         <span class="input-group-text">Search</span>
@@ -25,6 +29,39 @@
     </div>
     <button type="submit" class="btn btn-primary btn-lg">Submit</button>
 </form>
+
+<hr>
+
+
+<form id="create-patient-form" action="/create_patient" method="post">
+    <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text">Patient Name</span>
+        <input type="text" class="form-control" name="patient-name" placeholder="Enter patient name" required>
+    </div>
+
+    <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text">Sex</span>
+        <input type="text" class="form-control" name="sex" placeholder="Enter gender" required>
+    </div>
+
+    <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text">Date of Birth</span>
+        <input type="text" class="form-control" id="dob" name="dob" placeholder="Select Date of Birth" required>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-lg mt-3">Create New Patient</button>
+</form>
+
+<script>
+    flatpickr("#dob", {
+        dateFormat: "Y-m-d",  // Format the date as yyyy-mm-dd
+        maxDate: "today",     // Prevent future dates
+        minDate: "1900-01-01", // Set a minimum selectable date
+        defaultDate: "today", // Default to today's date (optional)
+    });
+</script>
+
+<hr>
 
 {% if table_body %}
 
@@ -37,11 +74,13 @@
         <th>Date of Birth</th>
         <th>Sex</th>
         <th class="sorttable_nosort">Open SoapNote</th>
+        <th class="sorttable_nosort">Actions</th>
     </thead>
     <tbody>
         {{ table_body }}
     </tbody>
 </table>
+
 
 {% else %}
 

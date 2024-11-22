@@ -1,4 +1,4 @@
-from quart import Quart, request, render_template, jsonify
+from quart import Quart, request, render_template, jsonify, redirect, url_for
 from markupsafe import Markup
 import utils
 from database import VMMService
@@ -55,22 +55,61 @@ async def soap_notes(soapnote_id):
 
 
 
+@app.route("/create_patient", methods=["POST"])
+async def create_patient():
+    form = (await request.form)
+    patient_name = form.get("patient-name")
+    sex = form.get("sex")
+    dob = form.get("dob")
+    year, month, day = dob.split("-")
+    year = int(year)
+    month = int(month)
+    day = int(day)
+
+    print(patient_name)
+    print(sex)
+    print(dob)
+
+    if not patient_name:
+        return "Error: Patient name is required.", 400
+
+    john_doe_doctor = await (db.list_all("Doctor"))
+    
+
+    new_patient = await db.add_patient(
+        john_doe_doctor[0], patient_name, sex, datetime(year, month, day)
+    )
+
+    await db.add_soapnote(
+        new_patient, {"skibidi": "sigma", "alpha": "wolf"}
+    )
+
+    return redirect(url_for('patient_portal'))
+
+
+@app.route("/remove-patient/<patient_id>", methods=["GET", "POST"])
+async def remove_patient(patient_id):
+    patient = await (db.search_unique("patient", id=patient_id))
+    if patient:
+        print("successfully found patient to delete!")
+        await (db.remove_patient(patient_id))
+    else:
+        print("didn't find patient id to delete!")
+
+    
+    return redirect(url_for("patient_portal"))
+
 @app.route("/patient-portal", methods=["GET", "POST"])
 async def patient_portal():
-    if request.method == "POST":
-        patient_name = (await request.form).get("name-query", "")
+    patient_name = (await request.form).get("name-query", "")
 
-        portal_helper = utils.PatientPortal(db)
-        table_body_html = await portal_helper.get_patient_table(patient_name)
+    portal_helper = utils.PatientPortal(db)
+    table_body_html = await portal_helper.get_patient_table(patient_name)
 
-        
-        
-        return await render_template(
-            "patient-portal.html",
-            table_body=Markup(table_body_html),
-        )
-
-    return await render_template("patient-portal.html")
+    return await render_template(
+        "patient-portal.html",
+        table_body=Markup(table_body_html),
+    )
 
 @app.route("/appointments", methods=["GET", "POST"])
 async def appointments_index():
@@ -117,7 +156,6 @@ async def appointments_index():
             return jsonify({"success": False, "message": "Error in finding doctor and patient!\nError Code: 32B"}), 400
     
     return await render_template("appointments.html")
-
     
 @app.route("/appointments/doctor=<string:doctor>", methods=["GET"])
 async def get_doctor_events(doctor):

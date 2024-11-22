@@ -88,6 +88,17 @@ class VMMService:
         )
 
         return query_result
+    
+    async def find_doctor_by_name(self, name: str):
+        # Use Prisma's findUnique method to search by the 'name' field
+        query_result = await self.prisma.doctor.find_unique(
+           where={
+               "name": name,  # Search by the 'name' field in the Doctor model
+           }
+        )
+        return query_result
+
+
 
     async def search_unique(self, model: str, **kwargs: dict[str, Any]) -> Any | None:
         query_result: Any = await self.get_model(model).find_unique(
@@ -123,6 +134,11 @@ class VMMService:
 
     async def remove_all(self, model: str) -> None:
         await self.get_model(model).delete_many()
+    
+    async def remove_patient(self, patient_id: str) -> None:
+        patient_model = (self.get_model("Patient"))
+        print("removing patient id: "  + patient_id)
+        await patient_model.delete_many({"id": patient_id})
 
     async def add_appointment(self, doctor_id: str, patient_id: str, title: str, start, end):
         return await self.prisma.appointments.create(

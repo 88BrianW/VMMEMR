@@ -81,13 +81,16 @@ class PatientPortal:
             sex = patient.sex
 
             soapnote_column = ""
-            soapnote = await self.db.search_many("soapnote", patientId=patient.id)
+            soapnote = await (self.db.search_many("soapnote", patientId=patient.id))
+            print(soapnote)
 
-            if soapnote != None:
+            if soapnote:
                 soapnote_id = soapnote[0].id
                 soapnote_column = f'<a href="/soap-notes/{soapnote_id}">Open SoapNote</a>'
+            
+            remove_button = f'<a href="/remove-patient/{patient.id}" class="btn btn-danger">Remove</a>'
 
-            patient_data = [patient_id, name, name, date_of_birth, sex, soapnote_column]
+            patient_data = [patient_id, name, name, date_of_birth, sex, soapnote_column, remove_button]
 
             patient_data = [f"<td>{data}</td>" for data in patient_data]
 
