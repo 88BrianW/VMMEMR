@@ -205,5 +205,5 @@ async def submit():
 
 
 if __name__ == "__main__":
-    port_number = os.environ["PORT"]
-    app.run(debug=True, use_reloader=True, port=port_number)
+    port_number = int(os.environ.get("PORT", 80))  # Default to 80 if PORT is not set
+    app.run(debug=True, use_reloader=True, host="0.0.0.0", port=port_number)
