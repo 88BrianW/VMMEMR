@@ -171,38 +171,41 @@ class VMMService:
 
 
 async def main() -> None:
+
     client = VMMService()
 
     await client.connect()
 
-    # Remove all records
-    await client.remove_all("doctor")
-    await client.remove_all("patient")
-    await client.remove_all("appointments")
+    checkDoctors = await (client.list_all("Doctor"))
+    if not checkDoctors: #if there is nothing we want to restart it basically
+        # Remove all records
+        await client.remove_all("doctor")
+        await client.remove_all("patient")
+        await client.remove_all("appointments")
 
-    # All new records
-    new_doc = await client.add_doctor("John Doe")
+        # All new records
+        new_doc = await client.add_doctor("John Doe")
 
-    new_patient = await client.add_patient(
-        new_doc, "Meow", "Male", datetime(2001, 5, 24)
-    )
+        new_patient = await client.add_patient(
+            new_doc, "Meow", "Male", datetime(2001, 5, 24)
+        )
 
-    print(new_doc)
-    print()
-    print(new_patient)
-    print()
+        print(new_doc)
+        print()
+        print(new_patient)
+        print()
 
-    # List all patients assigned to new_doc
+        # List all patients assigned to new_doc
 
-    new_soap_note = await client.add_soapnote(
-        new_patient, {"skibidi": "sigma", "alpha": "wolf"}
-    )
+        new_soap_note = await client.add_soapnote(
+            new_patient, {"skibidi": "sigma", "alpha": "wolf"}
+        )
 
-    print(new_soap_note)
+        print(new_soap_note)
 
-    print(new_patient)
+        print(new_patient)
 
-    await client.disconnect()
+        await client.disconnect()
 
 
 if __name__ == "__main__":
