@@ -4,6 +4,7 @@ import utils
 from database import VMMService
 from datetime import datetime
 import json
+import os
 
 app = Quart(
     __name__,
@@ -204,4 +205,5 @@ async def submit():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, use_reloader=True)
+    port_number = os.environ["PORT"]
+    app.run(debug=True, use_reloader=True, port=port_number)
