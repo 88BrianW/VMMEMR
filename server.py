@@ -38,8 +38,8 @@ async def index():
 
 
 
-@app.route("/soap-notes/<uuid:soapnote_id>", methods=["GET", "POST"])
-async def soap_notes(soapnote_id):
+@app.route("/soap-notes/<uuid:soapnote_id>/<string:name>", methods=["GET", "POST"])
+async def soap_notes(soapnote_id, name):
     soapnote_helper = utils.SoapNoteTemplate(db, str(soapnote_id))
 
     if request.method == "POST":
@@ -52,7 +52,7 @@ async def soap_notes(soapnote_id):
         form_html = await soapnote_helper.get_form("template.json")
 
         form_content = Markup(form_html)
-        return await render_template("soap-notes.html", form_content=Markup(form_content))
+        return await render_template("soap-notes.html", form_content=Markup(form_content), name=name)
 
 
 
@@ -206,4 +206,4 @@ async def submit():
 
 if __name__ == "__main__":
     port_number = int(os.environ.get("PORT", 80))  # Default to 80 if PORT is not set
-    app.run(debug=True, use_reloader=True, host="0.0.0.0", port=port_number)
+    app.run(debug=True, use_reloader=True, port=port_number, host="0.0.0.0")

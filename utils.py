@@ -86,7 +86,7 @@ class PatientPortal:
 
             if soapnote:
                 soapnote_id = soapnote[0].id
-                soapnote_column = f'<a href="/soap-notes/{soapnote_id}">Open SoapNote</a>'
+                soapnote_column = f'<a href="/soap-notes/{soapnote_id}/{name}">Open SoapNote</a>'
             
             remove_button = f'<a href="/remove-patient/{patient.id}" class="btn btn-danger">Remove</a>'
 
