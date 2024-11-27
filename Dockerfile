@@ -19,11 +19,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Add a non-root user for installing Nix
-RUN useradd -m nixuser && \
-    sudo -u nixuser curl -L https://nixos.org/nix/install | bash
+# Create the necessary group and user for installing Nix
+RUN groupadd nixbld && \
+    useradd -m -g nixbld nixuser
 
-# Ensure Nix is available in the path for all users
+# Install Nix using the official installation script
+RUN sudo -u nixuser curl -L https://nixos.org/nix/install | bash
+
+# Ensure Nix is available in the PATH
 ENV PATH=/home/nixuser/.nix-profile/bin:$PATH
 
 # Install glibc 2.38
@@ -53,7 +56,7 @@ RUN pip3 install -r requirements.txt
 RUN nix prisma generate && nix prisma db push
 
 # Expose the port your app will run on (adjust the port if needed)
-EXPOSE 5000
+EXPOSE 80
 
 # Set the entry point to start your app
 CMD ["python3", "server.py"]
