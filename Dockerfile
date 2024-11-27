@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 # Set environment variables to avoid prompts during apt-get install
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install required dependencies for building glibc and CA certificates
+# Install required dependencies for building glibc, CA certificates, and Python
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     build-essential \
@@ -17,8 +17,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
     python3-pip \
     git \
-    nix \
     && rm -rf /var/lib/apt/lists/*
+
+# Add a non-root user for installing Nix
+RUN useradd -m nixuser && \
+    sudo -u nixuser curl -L https://nixos.org/nix/install | bash
+
+# Ensure Nix is available in the path for all users
+ENV PATH=/home/nixuser/.nix-profile/bin:$PATH
 
 # Install glibc 2.38
 RUN curl -L https://ftp.gnu.org/gnu/libc/glibc-2.38.tar.gz -o glibc-2.38.tar.gz && \
@@ -44,10 +50,10 @@ COPY . /app
 RUN pip3 install -r requirements.txt
 
 # Run Prisma generate and db push (ensure Prisma is configured in your project)
-RUN prisma generate && prisma db push
+RUN nix prisma generate && nix prisma db push
 
 # Expose the port your app will run on (adjust the port if needed)
-EXPOSE 80
+EXPOSE 5000
 
 # Set the entry point to start your app
 CMD ["python3", "server.py"]
