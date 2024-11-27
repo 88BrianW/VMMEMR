@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
     python3-pip \
     git \
+    gawk \
+    bison \
     && rm -rf /var/lib/apt/lists/*
 
 # Install glibc 2.38
@@ -26,7 +28,7 @@ RUN curl -L https://ftp.gnu.org/gnu/libc/glibc-2.38.tar.gz -o glibc-2.38.tar.gz 
     mkdir build && cd build && \
     ../configure --prefix=/usr && \
     make -j"$(nproc)" && \
-    sudo make install && \
+    make install && \
     cd ../.. && rm -rf glibc-2.38*
 
 # Clean up unnecessary build dependencies and cached files
@@ -43,7 +45,7 @@ COPY . /app
 RUN pip3 install -r requirements.txt
 
 # Run Prisma generate and db push (ensure Prisma is configured in your project)
-RUN nix prisma generate && nix prisma db push
+RUN prisma generate && prisma db push
 
 # Expose the port your app will run on (adjust the port if needed)
 EXPOSE 80
