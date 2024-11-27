@@ -1,3 +1,0 @@
-[phases.setup]
-aptPkgs = ["...", "ffmpeg"]
-nixPkgs = ["GLIBC-2.36", "gcc", "python3"] # append GLIBC-2.36 to your nixpacks.toml
