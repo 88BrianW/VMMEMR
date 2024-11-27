@@ -10,3 +10,4 @@
 
 Piggy:  ssh -p 443 -R0:127.0.0.1:80 qr@a.pinggy.io
 python:  & C:/Users/0312b/AppData/Local/Programs/Python/Python312/python.exe "c:/Users/0312b/OneDrive/Documents/VMM-EMR-SYSTEM-main (1)/VMM-EMR-SYSTEM-main/server.py"
+s
