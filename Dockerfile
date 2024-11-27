@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 # Set environment variables to avoid prompts during apt-get install
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install required dependencies for building glibc, CA certificates, and Python
+# Install required dependencies for building glibc and CA certificates
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     build-essential \
@@ -18,16 +18,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     git \
     && rm -rf /var/lib/apt/lists/*
-
-# Create the necessary group and user for installing Nix
-RUN groupadd nixbld && \
-    useradd -m -g nixbld nixuser
-
-# Install Nix using the official installation script
-RUN sudo -u nixuser curl -L https://nixos.org/nix/install | bash
-
-# Ensure Nix is available in the PATH
-ENV PATH=/home/nixuser/.nix-profile/bin:$PATH
 
 # Install glibc 2.38
 RUN curl -L https://ftp.gnu.org/gnu/libc/glibc-2.38.tar.gz -o glibc-2.38.tar.gz && \
