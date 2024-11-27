@@ -17,8 +17,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
     python3-pip \
     git \
-    nix \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Nix package manager
+RUN curl -L https://nixos.org/nix/install | sh
+
+# Ensure Nix is available in the path
+ENV PATH=/root/.nix-profile/bin:$PATH
 
 # Install glibc 2.38
 RUN curl -L https://ftp.gnu.org/gnu/libc/glibc-2.38.tar.gz -o glibc-2.38.tar.gz && \
