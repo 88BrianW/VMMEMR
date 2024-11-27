@@ -1,35 +1,36 @@
-# Use a base image with Ubuntu or a similar system
+# Start with a base Ubuntu image
 FROM ubuntu:20.04
 
-# Install dependencies using apt-get
+# Set environment variables to avoid prompts during apt-get install
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install required dependencies for building glibc
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ffmpeg \
-    gcc \
-    python3 \
     curl \
-    ca-certificates \
-    sudo
+    build-essential \
+    sudo \
+    wget \
+    make \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Nix package manager
-RUN curl -L https://nixos.org/nix/install | sh
+# Download and install the latest version of GLIBC (2.36 at the time of writing)
+RUN curl -L https://ftp.gnu.org/gnu/libc/glibc-2.36.tar.gz -o glibc-2.36.tar.gz && \
+    tar -xvzf glibc-2.36.tar.gz && \
+    cd glibc-2.36 && \
+    mkdir build && cd build && \
+    ../configure --prefix=/usr && \
+    make -j"$(nproc)" && \
+    sudo make install && \
+    cd ../.. && rm -rf glibc-2.36*
 
-# Copy the Nix expression file
-COPY .nixpacks/nixpkgs-bf446f08bff6814b569265bef8374cfdd3d8f0e0.nix .nixpacks/nixpkgs-bf446f08bff6814b569265bef8374cfdd3d8f0e0.nix
+# Clean up unnecessary build dependencies and cached files
+RUN rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
 
-# Install packages using nix-env
-RUN /bin/bash -c "source /root/.nix-profile/etc/profile.d/nix.sh && nix-env -if .nixpacks/nixpkgs-bf446f08bff6814b569265bef8374cfdd3d8f0e0.nix && nix-collect-garbage -d"
+# Set the working directory in the container (optional)
+WORKDIR /root
 
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy application code into the container
-COPY . /app
-
-# Install Python dependencies
-RUN python3 -m pip install -r requirements.txt
-
-# Expose the port your app runs on
-EXPOSE 5000
-
-# Run the application
-CMD ["python3", "main.py"]
+# Set the entry point or command (optional, this can be a placeholder)
+CMD ["bash"]
