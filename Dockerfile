@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 # Set environment variables to avoid prompts during apt-get install
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install required dependencies for building glibc, and also missing tools (gawk, bison, python3)
+# Install required dependencies for building glibc and CA certificates
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     build-essential \
@@ -14,27 +14,40 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     g++ \
     ca-certificates \
-    gawk \
-    bison \
     python3 \
+    python3-pip \
+    git \
+    nix \
     && rm -rf /var/lib/apt/lists/*
 
-# Download and install the latest version of GLIBC (2.36 at the time of writing)
-RUN curl -L https://ftp.gnu.org/gnu/libc/glibc-2.36.tar.gz -o glibc-2.36.tar.gz && \
-    tar -xvzf glibc-2.36.tar.gz && \
-    cd glibc-2.36 && \
+# Install glibc 2.38
+RUN curl -L https://ftp.gnu.org/gnu/libc/glibc-2.38.tar.gz -o glibc-2.38.tar.gz && \
+    tar -xvzf glibc-2.38.tar.gz && \
+    cd glibc-2.38 && \
     mkdir build && cd build && \
     ../configure --prefix=/usr && \
     make -j"$(nproc)" && \
     sudo make install && \
-    cd ../.. && rm -rf glibc-2.36*
+    cd ../.. && rm -rf glibc-2.38*
 
 # Clean up unnecessary build dependencies and cached files
 RUN rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-# Set the working directory in the container (optional)
-WORKDIR /root
+# Set the working directory in the container
+WORKDIR /app
 
-# Set the entry point or command (optional, this can be a placeholder)
-CMD ["bash"]
+# Copy your project files into the container
+COPY . /app
+
+# Install Python dependencies from requirements.txt
+RUN pip3 install -r requirements.txt
+
+# Run Prisma generate and db push (ensure Prisma is configured in your project)
+RUN nix prisma generate && nix prisma db push
+
+# Expose the port your app will run on (adjust the port if needed)
+EXPOSE 80
+
+# Set the entry point to start your app
+CMD ["python3", "server.py"]
