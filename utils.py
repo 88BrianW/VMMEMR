@@ -19,6 +19,7 @@ class SoapNoteTemplate:
                 field_type = field.get("type", "")
                 input_type = field.get("inputType", "")
                 placeholder = field.get("placeholder", "")
+                options = field.get("options", [])
 
                 if field_type == "group":
                     # Header tags based on level
@@ -40,6 +41,23 @@ class SoapNoteTemplate:
                         html_parts.append(
                             f'<{input_type} id="{field_id}" name="{field_id}" type="{field_type}" class="form-control" aria-label="{label}" placeholder="{placeholder}" value="{self.soapnote_content.get(field_id, "")}">'
                         )
+                    elif input_type == "dropdown":
+                        # Create the dropdown (select) field
+                        html_parts.append(f'<select id="{field_id}" name="{field_id}" class="form-control" aria-label="{label}">')
+                        
+                        # If options are provided, create an <option> for each one
+                        for option in options:
+                            if isinstance(option, dict):  # If options contain a value and label
+                                value = option.get("value", "")
+                                option_label = option.get("label", "")
+                            else:  # If options are just strings
+                                value = option
+                                option_label = option
+
+                            # Create each option in the dropdown
+                            html_parts.append(f'<option value="{value}">{option_label}</option>')
+                        
+                        html_parts.append('</select>')
 
                     html_parts.append("</div>")
                     html_parts.append("<br>")

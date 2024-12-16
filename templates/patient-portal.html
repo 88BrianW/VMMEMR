@@ -38,9 +38,14 @@
     </div>
 
     <div class="input-group input-group-lg mb-3">
-        <span class="input-group-text">Sex</span>
-        <input type="text" class="form-control" name="sex" placeholder="Enter gender" required>
+        <span class="input-group-text">Sex Assigned At Birth</span>
+        <select class="form-control" name="sex" required>
+            <option value="" disabled selected>Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
     </div>
+    
 
     <div class="input-group input-group-lg mb-3">
         <span class="input-group-text">Date of Birth</span>

@@ -1,298 +1,366 @@
-{
-    "fields": [
-        {
-            "label": "Subjective",
-            "id": "subjective",
-            "type": "group",
-            "fields": [
-                {
-                    "label": "Chief Complaint",
-                    "id": "chiefComplaint",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "Describe the main issue"
-                },
-                {
-                    "label": "History of Present Illness",
-                    "id": "HPI",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "Detail the history of the current condition"
-                },
-                {
-                    "label": "Review of Systems",
-                    "id": "reviewOfSystems",
-                    "type": "group",
-                    "fields": [
-                        {
-                            "label": "Constitutional",
-                            "id": "constitutional",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant general information (e.g., fever, weight loss)"
-                        },
-                        {
-                            "label": "Cardiovascular",
-                            "id": "cardiovascular",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant cardiovascular information (e.g., chest pain, palpitations)"
-                        },
-                        {
-                            "label": "Respiratory",
-                            "id": "respiratory",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant respiratory information (e.g., cough, shortness of breath)"
-                        },
-                        {
-                            "label": "Gastrointestinal",
-                            "id": "gastrointestinal",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant gastrointestinal information (e.g., abdominal pain, nausea)"
-                        },
-                        {
-                            "label": "Musculoskeletal",
-                            "id": "musculoskeletal",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant musculoskeletal information (e.g., joint pain, back pain)"
-                        },
-                        {
-                            "label": "Neurological",
-                            "id": "neurological",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant neurological information (e.g., dizziness, headaches)"
-                        },
-                        {
-                            "label": "Other",
-                            "id": "otherROS",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant information not previously stated"
-                        }
-                    ]
-                },
-                {
-                    "label": "Patient History",
-                    "id": "patientHistory",
-                    "type": "group",
-                    "fields": [
-                        {
-                            "label": "Past Medical History",
-                            "id": "pastMedicalHistory",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant past medical history"
-                        },
-                        {
-                            "label": "Surgical History",
-                            "id": "surgicalHistory",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant past surgical history"
-                        },
-                        {
-                            "label": "Family Medical History",
-                            "id": "familyHistory",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant past family medical history"
-                        },
-                        {
-                            "label": "Social History",
-                            "id": "socialHistory",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Include any relevant past patient social history"
-                        }
-                    ]
-                },
-                {
-                    "label": "Allergies",
-                    "id": "allergies",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "Detail the patient allergies"
-                },
-                {
-                    "label": "Coming Soon",
-                    "id": "todo",
-                    "type": "text",
-                    "inputType": "input",
-                    "placeholder": "todo field"
-                }
-            ]
-        },
-        {
-            "label": "Objective",
-            "id": "objective",
-            "type": "group",
-            "fields": [
-                {
-                    "label": "Vital Signs",
-                    "id": "vitalSigns",
-                    "type": "group",
-                    "fields": [
-                        {
-                            "label": "Temperature",
-                            "id": "temperature",
-                            "type": "text",
-                            "inputType": "input",
-                            "placeholder": "Input temperature (°C or °F)"
-                        },
-                        {
-                            "label": "Pulse",
-                            "id": "pulse",
-                            "type": "text",
-                            "inputType": "input",
-                            "placeholder": "Input pulse (bpm)"
-                        },
-                        {
-                            "label": "Blood Pressure",
-                            "id": "bloodPressure",
-                            "type": "text",
-                            "inputType": "input",
-                            "placeholder": "Input blood pressure (mmHg)"
-                        },
-                        {
-                            "label": "Respiratory Rate",
-                            "id": "respiratoryRate",
-                            "type": "text",
-                            "inputType": "input",
-                            "placeholder": "Input respiratory rate (breaths/min)"
-                        },
-                        {
-                            "label": "Oxygen Saturation",
-                            "id": "oxygenSaturation",
-                            "type": "text",
-                            "inputType": "input",
-                            "placeholder": "Input oxygen saturation (%)"
-                        },
-                        {
-                            "label": "Height",
-                            "id": "height",
-                            "type": "text",
-                            "inputType": "input",
-                            "placeholder": "Input height (in/cm)"
-                        },
-                        {
-                            "label": "Weight",
-                            "id": "weight",
-                            "type": "text",
-                            "inputType": "input",
-                            "placeholder": "Input weight (lb/kg)"
-                        }
-                    ]
-                },
-                {
-                    "label": "Physical Examination",
-                    "id": "physicalExamination",
-                    "type": "group",
-                    "fields": [
-                        {
-                            "label": "General",
-                            "id": "generalExam",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "General examination notes (e.g., no acute distress)"
-                        },
-                        {
-                            "label": "Respiratory System",
-                            "id": "respiratoryExam",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Respiratory system examination (e.g., breathing comfortably)"
-                        },
-                        {
-                            "label": "Cardiovascular System",
-                            "id": "cardiovascularExam",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Cardiovascular examination notes"
-                        },
-                        {
-                            "label": "Abdominal Examination",
-                            "id": "abdominalExam",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Abdominal examination notes (e.g., no abdominal distension)"
-                        },
-                        {
-                            "label": "Musculoskeletal System",
-                            "id": "musculoskeletalExam",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Musculoskeletal examination notes (e.g., no swelling, full range of motion)"
-                        },
-                        {
-                            "label": "Neurological Examination",
-                            "id": "neurologicalExam",
-                            "type": "text",
-                            "inputType": "textarea",
-                            "placeholder": "Neurological examination notes (e.g., no issues with coordination)"
-                        }
-                    ]
-                },
-                {
-                    "label": "Laboratory/Diagnostic Results",
-                    "id": "labResults",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "Input relevant laboratory or diagnostic results"
-                }
-            ]
-        },
-        {
-            "label": "Assessment",
-            "id": "assessment",
-            "type": "group",
-            "fields": [
-                {
-                    "label": "Diagnosis",
-                    "id": "diagnosis",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "Input diagnosis"
-                }
-            ]
-        },
-        {
-            "label": "Plan",
-            "id": "plan",
-            "type": "group",
-            "fields": [
-                {
-                    "label": "Treatment Plan",
-                    "id": "treatmentPlan",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "Input treatment plan"
-                },
-                {
-                    "label": "Follow Up",
-                    "id": "followUp",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "Input follow-up recommendations"
-                }
-            ]
-        },
-        {
-            "label": "Additional Notes",
-            "id": "more_notes",
-            "type": "group",
-            "fields": [
-                {
-                    "label": "Additional Notes",
-                    "id": "additional_notes",
-                    "type": "text",
-                    "inputType": "textarea",
-                    "placeholder": "Input any additional notes needed!"
-                }
-            ]
-        }
-    ]
-}
+    {
+        "fields": [
+            {
+                "label": "Subjective",
+                "id": "subjective",
+                "type": "group",
+                "fields": [
+                    {
+                        "label": "Chief Complaint",
+                        "id": "chiefComplaint",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Describe the main issue"
+                    },
+                    {
+                        "label": "Duration",
+                        "id": "duration",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "How long has this been occuring? When did it start? Was there any major event or travel that may be associated with it?"
+                    },
+                    {
+                        "label": "Severity",
+                        "id": "Severity",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Describe the pain(if any). Is it acute, chronic, dull, sharp, etc.? If it is another type of discomfort describe its severity"
+                    },
+                    {
+                        "label": "Pain Scale",
+                        "id": "Pain Scale",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Describe the pain (if any) on a scale of 1-10"
+                    },
+                    {
+                        "label": "Location",
+                        "id": "Location",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Describe the location of the pain or discomfort"
+                    },
+                    {
+                        "label": "Associated Symptoms",
+                        "id": "AP",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Describe any additional symptoms associated with the cheif complaint"
+                    },
+                    {
+                        "label": "Patient Description",
+                        "id": "Patd",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Use this space to describe pateint's initial appearance"
+                    },
+
+
+                    {
+                        "label": "History of Present Illness",
+                        "id": "HPI",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Detail the history of the current condition"
+                    },
+                    {
+                        "label": "Onset",
+                        "id": "Onset",
+                        "type": "text",
+                        "inputType": "dropdown",
+                        "placeholder": "Standard Options",
+                        "options": ["sudden", "gradual"]
+                    },
+                    {
+                        "label": "Onset (What was the patient experiencing in their life around the time their symptoms first began?)",
+                        "id": "HPI",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Was there a significant change in the patient's work, living conditions, or family dynamics, such as a change in farming seasons, relocation to a rural area, or the onset of a new caregiving role?"
+                    },
+                    {
+                        "label": "Onset (Did any specific events trigger the patient's symptoms?)",
+                        "id": "HPI",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "For instance, did a physical activity, emotional stress, or social event (e.g., a funeral, family gathering, or local ritual) seem to precede or intensify the patient’s symptoms?"
+                    },
+                    {
+                        "label": "Onset (How did the patient first notice the change in their health?)",
+                        "id": "HPI",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Did the change in their health happen suddenly (e.g., after a physical injury or a stressful situation), or did it develop gradually over time (e.g., a slow accumulation of symptoms due to work or family pressures)?"
+                    },
+
+                    {
+                        "label": "Review of Systems",
+                        "id": "reviewOfSystems",
+                        "type": "group",
+                        "fields": [
+                            {
+                                "label": "Constitutional",
+                                "id": "constitutional",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant general information (e.g., fever, weight loss)"
+                            },
+                            {
+                                "label": "Cardiovascular",
+                                "id": "cardiovascular",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant cardiovascular information (e.g., chest pain, palpitations)"
+                            },
+                            {
+                                "label": "Respiratory",
+                                "id": "respiratory",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant respiratory information (e.g., cough, shortness of breath)"
+                            },
+                            {
+                                "label": "Gastrointestinal",
+                                "id": "gastrointestinal",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant gastrointestinal information (e.g., abdominal pain, nausea)"
+                            },
+                            {
+                                "label": "Musculoskeletal",
+                                "id": "musculoskeletal",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant musculoskeletal information (e.g., joint pain, back pain)"
+                            },
+                            {
+                                "label": "Neurological",
+                                "id": "neurological",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant neurological information (e.g., dizziness, headaches)"
+                            },
+                            {
+                                "label": "Other",
+                                "id": "otherROS",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant information not previously stated"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Patient History",
+                        "id": "patientHistory",
+                        "type": "group",
+                        "fields": [
+                            {
+                                "label": "Past Medical History",
+                                "id": "pastMedicalHistory",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant past medical history"
+                            },
+                            {
+                                "label": "Surgical History",
+                                "id": "surgicalHistory",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant past surgical history"
+                            },
+                            {
+                                "label": "Family Medical History",
+                                "id": "familyHistory",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant past family medical history"
+                            },
+                            {
+                                "label": "Social History",
+                                "id": "socialHistory",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Include any relevant past patient social history"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Allergies",
+                        "id": "allergies",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Detail the patient allergies"
+                    }
+                ]
+            },
+            {
+                "label": "Objective",
+                "id": "objective",
+                "type": "group",
+                "fields": [
+                    {
+                        "label": "Vital Signs",
+                        "id": "vitalSigns",
+                        "type": "group",
+                        "fields": [
+                            {
+                                "label": "Temperature",
+                                "id": "temperature",
+                                "type": "text",
+                                "inputType": "input",
+                                "placeholder": "Input temperature (°C or °F)"
+                            },
+                            {
+                                "label": "Pulse",
+                                "id": "pulse",
+                                "type": "text",
+                                "inputType": "input",
+                                "placeholder": "Input pulse (bpm)"
+                            },
+                            {
+                                "label": "Blood Pressure",
+                                "id": "bloodPressure",
+                                "type": "text",
+                                "inputType": "input",
+                                "placeholder": "Input blood pressure (mmHg)"
+                            },
+                            {
+                                "label": "Respiratory Rate",
+                                "id": "respiratoryRate",
+                                "type": "text",
+                                "inputType": "input",
+                                "placeholder": "Input respiratory rate (breaths/min)"
+                            },
+                            {
+                                "label": "Oxygen Saturation",
+                                "id": "oxygenSaturation",
+                                "type": "text",
+                                "inputType": "input",
+                                "placeholder": "Input oxygen saturation (%)"
+                            },
+                            {
+                                "label": "Height",
+                                "id": "height",
+                                "type": "text",
+                                "inputType": "input",
+                                "placeholder": "Input height (in/cm)"
+                            },
+                            {
+                                "label": "Weight",
+                                "id": "weight",
+                                "type": "text",
+                                "inputType": "input",
+                                "placeholder": "Input weight (lb/kg)"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Physical Examination",
+                        "id": "physicalExamination",
+                        "type": "group",
+                        "fields": [
+                            {
+                                "label": "General",
+                                "id": "generalExam",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "General examination notes (e.g., no acute distress)"
+                            },
+                            {
+                                "label": "Respiratory System",
+                                "id": "respiratoryExam",
+                                "type": "text",
+                                "inputType": "dropdown",
+                                "placeholder": "Respiratory system examination (e.g., breathing comfortably)",
+                                "options": ["option1", "option2", "option3"]
+                            },
+                            {
+                                "label": "Cardiovascular System",
+                                "id": "cardiovascularExam",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Cardiovascular examination notes"
+                            },
+                            {
+                                "label": "Abdominal Examination",
+                                "id": "abdominalExam",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Abdominal examination notes (e.g., no abdominal distension)"
+                            },
+                            {
+                                "label": "Musculoskeletal System",
+                                "id": "musculoskeletalExam",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Musculoskeletal examination notes (e.g., no swelling, full range of motion)"
+                            },
+                            {
+                                "label": "Neurological Examination",
+                                "id": "neurologicalExam",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Neurological examination notes (e.g., no issues with coordination)"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Laboratory/Diagnostic Results",
+                        "id": "labResults",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Input relevant laboratory or diagnostic results"
+                    }
+                ]
+            },
+            {
+                "label": "Assessment",
+                "id": "assessment",
+                "type": "group",
+                "fields": [
+                    {
+                        "label": "Diagnosis",
+                        "id": "diagnosis",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Input diagnosis"
+                    }
+                ]
+            },
+            {
+                "label": "Plan",
+                "id": "plan",
+                "type": "group",
+                "fields": [
+                    {
+                        "label": "Treatment Plan",
+                        "id": "treatmentPlan",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Input treatment plan"
+                    },
+                    {
+                        "label": "Follow Up",
+                        "id": "followUp",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Input follow-up recommendations"
+                    }
+                ]
+            },
+            {
+                "label": "Additional Notes",
+                "id": "more_notes",
+                "type": "group",
+                "fields": [
+                    {
+                        "label": "Additional Notes",
+                        "id": "additional_notes",
+                        "type": "text",
+                        "inputType": "textarea",
+                        "placeholder": "Input any additional notes needed!"
+                    }
+                ]
+            }
+        ]
+    }
