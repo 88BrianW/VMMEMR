@@ -11,6 +11,43 @@ class SoapNoteTemplate:
     def parse_json_to_html(self, data, level=1):
         html_parts = []
 
+        # Add CSS styles directly into the HTML output
+        html_parts.append("""
+        <style>
+            .form-label {
+                font-size: 16px;
+                font-weight: bold;
+                color: black;
+            }
+
+            .form-control {
+                width: 70%;
+                height: 40px;
+                font-size: 14px;
+                padding: 8px;
+                box-sizing: border-box;  /* Ensures padding doesn't affect width */
+            }
+
+            input[type="textarea"] {
+                height: auto;  /* Ensures that textarea adjusts height as needed */
+                white-space: normal;
+            }
+
+            .d-flex {
+                display: flex;
+                align-items: center;
+            }
+
+            .me-3 {
+                margin-right: 1rem;
+            }
+
+            .mb-3 {
+                margin-bottom: 1rem;
+            }
+        </style>
+        """)
+
         if isinstance(data, dict):
             fields = data.get("fields", [])
             for field in fields:
@@ -23,27 +60,32 @@ class SoapNoteTemplate:
 
                 if field_type == "group":
                     # Header tags based on level
-                    html_parts.append(f'<div id="{field_id}" class="ms-4">')
-                    html_parts.append(f'<h{level} class="mb-2">{label}</h{level}>')
+                    html_parts.append(f'<div id="{field_id}">')
+                    html_parts.append(f'<h{level}>{label}</h{level}>')
                     # Recursively process nested fields
                     html_parts.append(self.parse_json_to_html(field, level + 1))
                     html_parts.append("</div>")
 
                 else:
-                    html_parts.append('<div class="input-group">')
-                    html_parts.append(f'<span class="input-group-text">{label}</span>')
+                    html_parts.append('<div>')  # Margin at the bottom for spacing
+                    
+                    # Flex container to align label and input side by side
+                    html_parts.append(f'<div class="d-flex align-items-center">')
+                    
+                    # Label on the left with bold, larger, black font
+                    html_parts.append(f'<label for="{field_id}" class="form-label me-3" style="font-size: 16px; font-weight: bold; color: black; width: 30%;">{label}</label>')
 
                     if input_type == "textarea":
                         html_parts.append(
-                            f'<{input_type} id="{field_id}" name="{field_id}" type="{field_type}" class="form-control" aria-label="{label}" placeholder="{placeholder}">{self.soapnote_content.get(field_id, "")}</{input_type}>'
+                            f'<{input_type} id="{field_id}" name="{field_id}" class="form-control" aria-label="{label}" placeholder="{placeholder}" style="width: 70%; height: auto; white-space: normal;">{self.soapnote_content.get(field_id, "")}</{input_type}>'
                         )
                     elif input_type == "input":
                         html_parts.append(
-                            f'<{input_type} id="{field_id}" name="{field_id}" type="{field_type}" class="form-control" aria-label="{label}" placeholder="{placeholder}" value="{self.soapnote_content.get(field_id, "")}">'
+                            f'<{input_type} id="{field_id}" name="{field_id}" type="{field_type}" class="form-control" aria-label="{label}" placeholder="{placeholder}" value="{self.soapnote_content.get(field_id, "")}" style="width: 70%;">'
                         )
                     elif input_type == "dropdown":
                         # Create the dropdown (select) field
-                        html_parts.append(f'<select id="{field_id}" name="{field_id}" class="form-control" aria-label="{label}">')
+                        html_parts.append(f'<select id="{field_id}" name="{field_id}" class="form-control" aria-label="{label}" style="width: 70%;">')
                         
                         # If options are provided, create an <option> for each one
                         for option in options:
@@ -59,10 +101,11 @@ class SoapNoteTemplate:
                         
                         html_parts.append('</select>')
 
-                    html_parts.append("</div>")
+                    html_parts.append("</div>")  # Close flex container
                     html_parts.append("<br>")
 
         return "\n".join(html_parts)
+
 
     async def get_form(self, template_file_path: str):
         with open(template_file_path, "r") as file:

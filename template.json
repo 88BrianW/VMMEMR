@@ -181,15 +181,15 @@
                                 "type": "text",
                                 "inputType": "textarea",
                                 "placeholder": "Include any relevant past patient social history"
+                            },
+                            {
+                                "label": "Allergies",
+                                "id": "allergies",
+                                "type": "text",
+                                "inputType": "textarea",
+                                "placeholder": "Detail the patient allergies"
                             }
                         ]
-                    },
-                    {
-                        "label": "Allergies",
-                        "id": "allergies",
-                        "type": "text",
-                        "inputType": "textarea",
-                        "placeholder": "Detail the patient allergies"
                     }
                 ]
             },
@@ -272,45 +272,53 @@
                                 "type": "text",
                                 "inputType": "dropdown",
                                 "placeholder": "Respiratory system examination (e.g., breathing comfortably)",
-                                "options": ["option1", "option2", "option3"]
+                                "options": ["Choose From Below","Fever", "Chills", "Wieght Gain", "Weight Loss"]
                             },
                             {
                                 "label": "Cardiovascular System",
                                 "id": "cardiovascularExam",
                                 "type": "text",
-                                "inputType": "textarea",
-                                "placeholder": "Cardiovascular examination notes"
+                                "inputType": "dropdown",
+                                "placeholder": "Cardiovascular examination notes",
+                                "options":["Choose From Below", "Chest Pain", "Pressure", "Burning", "Tightness"]
                             },
                             {
                                 "label": "Abdominal Examination",
                                 "id": "abdominalExam",
                                 "type": "text",
-                                "inputType": "textarea",
-                                "placeholder": "Abdominal examination notes (e.g., no abdominal distension)"
+                               "inputType": "dropdown",
+                                "placeholder": "Cardiovascular examination notes",
+                                "options":["Choose From Below", "No Abdominal Distention"]
                             },
                             {
                                 "label": "Musculoskeletal System",
                                 "id": "musculoskeletalExam",
                                 "type": "text",
-                                "inputType": "textarea",
-                                "placeholder": "Musculoskeletal examination notes (e.g., no swelling, full range of motion)"
+                                "inputType": "dropdown",
+                                "placeholder": "musculoskeletal examination notes",
+                                "options":["Choose From Below","No Swelling", "No Diminished Range of Motion"]
+                            
                             },
                             {
                                 "label": "Neurological Examination",
                                 "id": "neurologicalExam",
                                 "type": "text",
+                                "inputType": "dropdown",
+                                "placeholder": "musculoskeletal examination notes",
+                                "options":["Choose From Below","No Swelling", "No Diminished Range of Motion"]
+                            },
+                            {
+                                "label": "Laboratory/Diagnostic Results",
+                                "id": "labResults",
+                                "type": "text",
                                 "inputType": "textarea",
-                                "placeholder": "Neurological examination notes (e.g., no issues with coordination)"
+                                "placeholder": "Input relevant laboratory or diagnostic results"
                             }
+
                         ]
-                    },
-                    {
-                        "label": "Laboratory/Diagnostic Results",
-                        "id": "labResults",
-                        "type": "text",
-                        "inputType": "textarea",
-                        "placeholder": "Input relevant laboratory or diagnostic results"
                     }
+                    
+        
                 ]
             },
             {
